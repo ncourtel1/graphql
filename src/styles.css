@@ -1,0 +1,120 @@
+/* Styles globaux */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+   background-color: #111;
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+#container {
+   width: 90%;
+   max-width: 600px;
+   text-align: center;
+   padding: 40px;
+   border-radius: 12px;
+}
+
+/* Login Form */
+.divConnexion {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+titledivConnexion {
+   font-size: 24px;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+
+input {
+   width: 100%;
+   padding: 12px;
+   border: none;
+   border-radius: 8px;
+   background: #222;
+   color: #fff;
+   font-size: 16px;
+}
+
+input::placeholder {
+   color: #bbb;
+}
+
+button {
+   width: 100%;
+   padding: 12px;
+   border: none;
+   border-radius: 8px;
+   background: linear-gradient(135deg, #444, #666);
+   color: white;
+   font-size: 16px;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+
+button:hover {
+   background: linear-gradient(135deg, #666, #888);
+}
+
+/* Dashboard */
+.divUser {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+.divInfo {
+   width: 100%;
+   padding: 20px;
+   background: #222;
+   border-radius: 12px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.XPreceived {
+   margin-top: -120px; /* Ajuste cette valeur pour réduire l'écart */
+   position: relative;
+}
+
+.divxp, .divaudit {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   text-align: left;
+}
+
+.divxp div, .divaudit div {
+   font-size: 18px;
+   padding: 5px 0;
+}
+
+.logout {
+   cursor: pointer;
+   color: #888;
+   text-decoration: underline;
+}
+
+.logout:hover {
+   color: #fff;
+}
+
+/* Graphique */
+.divgraph {
+   margin-top: 20px;
+}
+
+svg {
+   width: 100%;
+   height: auto;
+}
