@@ -94,12 +94,10 @@ function connexion() {
 }
 
 
-// Requete API :
-// https://zone01normandie.org/api/graphql-engine/v1/graphql
+
 async function fetchData() {
     let user = {};
 
-    // requeté d'information sur l'utilisateur (table user)
     const queryuserInfo = {
         "query": `
         {
@@ -118,7 +116,6 @@ async function fetchData() {
     user.firstName = dataUserInfo.data.user[0].firstName;
     user.lastName = dataUserInfo.data.user[0].lastName;
 
-    // requéte du level 
     const queryuserLevel = {
         "query": `
         {
@@ -135,10 +132,8 @@ async function fetchData() {
     if (dataUserLevel.errors !== undefined) {
         console.log("Error : ", dataUserLevel.errors); // error
     }
-    // console.log('dataUserLevel : ', dataUserLevel)
     user.lvl = dataUserLevel.data.user[0].events[0].level;
 
-    // requeté d'xp utilisateur (table transaction)
     const queryuserXP = {
         "query": `
         {
@@ -156,7 +151,6 @@ async function fetchData() {
     }
 
     user.listTransaction = dataUserXP.data.transaction;
-    // console.log("Liste des transaction : ", listTransaction);
 
     let sum = 0;
     for (let i = 0; i < user.listTransaction.length; i++) {
@@ -164,7 +158,6 @@ async function fetchData() {
     }
     user.maxXP = sum;
 
-    // requéte de la somme d'audit reçu (Received)
     const queryXPdown = {
         "query": `
         {
@@ -270,7 +263,7 @@ function MAJpage(user) {
     lineDone.setAttribute('x2', `${traceXPup * 100}%`); //user.XPup);
     lineDone.setAttribute('y2', 5);
     lineDone.setAttribute('stroke-width', 20);
-    lineDone.setAttribute('stroke', 'yellow');
+    lineDone.setAttribute('stroke', '#006A71');
     svgAudit.appendChild(lineDone);
     let lineReceived = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     lineReceived.setAttribute('x1', 0);
@@ -278,7 +271,7 @@ function MAJpage(user) {
     lineReceived.setAttribute('x2', `${traceXPdown * 100}%`); //user.XPdown);
     lineReceived.setAttribute('y2', 30);
     lineReceived.setAttribute('stroke-width', 20);
-    lineReceived.setAttribute('stroke', 'white');
+    lineReceived.setAttribute('stroke', '#9ACBD0');
     svgAudit.appendChild(lineReceived);
 
     divaudit.appendChild(svgAudit);
@@ -311,7 +304,7 @@ function MAJpage(user) {
     let rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     rect.setAttribute('width', 100);
     rect.setAttribute('height', 100);
-    rect.setAttribute('fill', "black");
+    rect.setAttribute('fill', "#006A71");
     svg.appendChild(rect);
 
     let firstDate = Date.parse(user.listTransaction[0].createdAt);
@@ -337,7 +330,7 @@ function MAJpage(user) {
             line.setAttribute('x2', ((Date.parse(user.listTransaction[i - 1].createdAt) - firstDate) * 100) / amplitudeDate);
             let ypreview = ((sum - user.listTransaction[i].amount) * 100) / maxgraph;
             line.setAttribute('y2', 100 - ypreview);
-            line.setAttribute('stroke', 'blue');
+            line.setAttribute('stroke', '#F2EFE7');
             svg.appendChild(line);
         }
     }
